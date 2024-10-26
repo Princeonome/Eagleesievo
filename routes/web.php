@@ -17,4 +17,8 @@ Route::post("/signin",[AuthController::class,'signin'])->name('login');
 Route::get("/dashboard",[StreetController::class, 'dashboard'])->name('dashboard');
 Route::post("/logout",[AuthController::class, 'logout'])->name('logout');
 Route::get("/edituser/{id}",[StreetController::class, 'edituser'])->name('edituser');
+Route::delete("/deleteuser/{id}",[StreetController::class, 'deleteuser'])->name('deleteuser');
+Route::put("/updateuser/{id}",[StreetController::class, 'updateuser'])->name('updateuser');
+Route::post("/restore_user/{id}",[StreetController::class, 'restore_user'])->name('restore_user');
+
 

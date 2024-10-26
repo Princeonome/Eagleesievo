@@ -11,32 +11,47 @@
             @csrf
             <button class="btn btn-danger btn-sm" type="submit">Logout</button>
         </form>
-        <a href="{{route('dashboard')}}" class="btn btn-outline-success btn-sm">back</a>
-        <h5>{{$user->username}}</h5>
+        <a  href="{{route('dashboard')}}" class="btn btn-outline-success btn-sm">back</a>
+        <h5>{{$user->username ?? ''}}</h5>
         
      <p>You are now editing {{$getuserinfo->name}}</p>
-    
+       
      <div class="container-fluid">
         <div class="row">
             
+
         <div class="col-md-2"></div>
         <div class="col-md-8">
-        <form>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
-  </div>
-  <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+        <form action="{{route('updateuser',$getuserinfo->id)}}" method="post">
+            @csrf
+            @method('PUT')
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Name</label>
+              <input type="text" value="{{$getuserinfo->name}}" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <div id="emailHelp" class="form-text"></div>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Username</label>
+              <input type="text" value="{{$getuserinfo->username}}"  name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <div id="emailHelp" class="form-text"></div>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Mobile</label>
+              <input type="mobile" value="{{$getuserinfo->mobile}}" name="mobile" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <div id="emailHelp" class="form-text"></div>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Role</label>
+              <input type="text" value="{{$getuserinfo->role}}" name="role" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <div id="emailHelp" class="form-text"></div>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email address</label>
+              <input type="email" value="{{$getuserinfo->email}}" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <div id="emailHelp" class="form-text"></div>
+            </div>
+              <button class="btn btn-sm btn-primary">Update</button>
+          </form>
         </div>
         <div class="col-md-2"></div>
 

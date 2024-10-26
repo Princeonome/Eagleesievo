@@ -7,6 +7,8 @@ use App\Http\Requests\SignupRequest;
 use App\Http\Requests\SigninRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 
 class AuthController extends Controller
@@ -25,12 +27,17 @@ class AuthController extends Controller
 
        $data = $request->validated();
        $users = User::create($data);
-      return redirect()->back();
+       Auth::login($users);
+       Alert::toast('Welcome '.auth()->user()->name, 'success');
+       return redirect()->route('dashboard');
+      //return redirect()->back();
         
     }
      public function signin (SigninRequest $request){
          $data = $request->validated();
          if(Auth::attempt($data)){
+            $username= auth()->user()->name;
+            Alert::toast('welcome '.$username, 'success');
               return redirect()->route('dashboard');
 
          }
