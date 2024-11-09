@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PagesController;
 
 
+
 Route::get("/street",[StreetController::class, 'getstreet']);
 Route::get("/",[StreetController::class, 'geteventiva'])->name('home');
 Route::get("/signin",[AuthController::class, 'loginForm'])->name('website');
